@@ -1,5 +1,10 @@
 async function checkSpam() {
     const text = document.getElementById("message").value;
+    const loader = document.getElementById("loader");
+    const result = document.getElementById("result");
+
+    loader.style.display = "block";
+    result.innerText = "";
 
     const response = await fetch("/predict", {
         method: "POST",
@@ -10,5 +15,7 @@ async function checkSpam() {
     });
 
     const data = await response.json();
-    document.getElementById("result").innerText = "Result: " + data.prediction;
+
+    loader.style.display = "none";
+    result.innerText = "Result: " + data.prediction;
 }
