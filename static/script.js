@@ -3,6 +3,12 @@ async function checkSpam() {
     const loader = document.getElementById("loader");
     const result = document.getElementById("result");
 
+    if (data.prediction === "spam") {
+    result.style.color = "red";
+} else {
+    result.style.color = "green";
+}
+
     loader.style.display = "block";
     result.innerText = "";
 
